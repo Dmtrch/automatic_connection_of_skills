@@ -1,0 +1,34 @@
+# Generated indexes
+.osgrep_index/
+
+# Runtime state
+.last_detected_skills
+
+# macOS
+.DS_Store
+
+# Settings backups created by install.sh
+*.bak.*
+
+# Claude Code local settings (machine-specific)
+.claude/
+
+# Nested git repos inside skill dirs — add only SKILL.md explicitly
+android-dev/.git
+android-dev/.gitignore
+api-design-principles/.git
+api-patterns/.git
+app-store-optimization/.git
+kotlin-specialist/.git
+kotlin-specialist/.gitignore
+cpp-pro/.git
+ddd-strategic-design/.git
+ddd-tactical-patterns/.git
+domain-driven-design/.git
+async-python-patterns/.git
+python-pro/.git
+typescript-pro/.git
+swift-expert/.git
+
+# skills/ symlink causes infinite recursion — add files explicitly below
+skills/

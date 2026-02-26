@@ -1,0 +1,159 @@
+#!/bin/bash
+# ~/.shared-ai-skills/wrappers/ai
+# Universal AI CLI wrapper with auto skill injection.
+#
+# Install:
+#   chmod +x ~/.shared-ai-skills/wrappers/ai
+#   ln -s ~/.shared-ai-skills/wrappers/ai ~/.local/bin/ai
+#
+# Usage:
+#   ai "create a PowerPoint about AI trends"          # auto-detects: pptx skill
+#   ai -t claude "write a report about..."            # force specific tool
+#   ai -t gemini "analyze this spreadsheet..."        # use gemini with xlsx skill
+#   ai --no-inject "simple question"                  # skip skill injection
+#   ai --list-skills                                  # list available skills
+#   ai --dry-run "create a presentation"              # show what would be injected
+
+DISPATCH="$HOME/.shared-ai-skills/dispatch.py"
+SKILLS_ROOT="$HOME/.shared-ai-skills"
+
+# ─── Parse arguments ──────────────────────────────────────────────────────────
+
+TOOL="claude"         # default tool
+NO_INJECT=false
+DRY_RUN=false
+LIST_SKILLS=false
+PROMPT=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -t|--tool)      TOOL="$2"; shift 2 ;;
+        --no-inject)    NO_INJECT=true; shift ;;
+        --dry-run)      DRY_RUN=true; shift ;;
+        --list-skills)  LIST_SKILLS=true; shift ;;
+        --help|-h)
+            echo "Usage: ai [options] \"your prompt\""
+            echo ""
+            echo "Options:"
+            echo "  -t, --tool TOOL    AI tool to use (claude|gemini|codex|opencode|aider)"
+            echo "  --no-inject        Skip skill injection"
+            echo "  --dry-run          Show detected skills without running"
+            echo "  --list-skills      List all available skills"
+            echo ""
+            echo "Examples:"
+            echo "  ai \"create a PowerPoint about AI\""
+            echo "  ai -t gemini \"write a Python script to...\""
+            exit 0
+            ;;
+        *)              PROMPT="$PROMPT $1"; shift ;;
+    esac
+done
+
+PROMPT="${PROMPT# }"  # trim leading space
+
+# ─── List skills mode ─────────────────────────────────────────────────────────
+
+if $LIST_SKILLS; then
+    python3 "$DISPATCH" list
+    exit 0
+fi
+
+if [ -z "$PROMPT" ]; then
+    echo "Usage: ai \"your prompt\"  (use --help for options)"
+    exit 1
+fi
+
+# ─── Skill detection ──────────────────────────────────────────────────────────
+
+INJECT_PREFIX=""
+
+if ! $NO_INJECT && [ -f "$DISPATCH" ]; then
+    DETECTED=$(python3 "$DISPATCH" detect "$PROMPT" 2>/dev/null)
+
+    if [ -n "$DETECTED" ] && [ "$DETECTED" != "NONE" ]; then
+        # Parse skill names
+        SKILL_NAMES=""
+        for line in $DETECTED; do
+            if [[ "$line" == SKILLS:* ]]; then
+                SKILL_NAMES="${line#SKILLS:}"
+            fi
+        done
+
+        if $DRY_RUN; then
+            echo "─── DRY RUN ────────────────────────────────"
+            echo "Tool:    $TOOL"
+            echo "Skills:  $SKILL_NAMES"
+            echo "Prompt:  $PROMPT"
+            echo "────────────────────────────────────────────"
+            exit 0
+        fi
+
+        # Build inject prefix with skill contents
+        if [ -n "$SKILL_NAMES" ]; then
+            INJECT_PREFIX=$(python3 "$DISPATCH" inject "$PROMPT" 2>/dev/null)
+        fi
+    fi
+fi
+
+# Use original prompt if no injection
+FINAL_PROMPT="${INJECT_PREFIX:-$PROMPT}"
+
+# ─── Route to correct tool ────────────────────────────────────────────────────
+
+case "$TOOL" in
+    claude|claude-code)
+        # Claude Code CLI: pass via -p flag (non-interactive) or pipe
+        if command -v claude &>/dev/null; then
+            echo "$FINAL_PROMPT" | claude --no-color
+        else
+            echo "[ai] claude CLI not found. Install: npm install -g @anthropic-ai/claude-code" >&2
+            exit 1
+        fi
+        ;;
+
+    gemini)
+        if command -v gemini &>/dev/null; then
+            echo "$FINAL_PROMPT" | gemini
+        else
+            echo "[ai] gemini CLI not found." >&2
+            exit 1
+        fi
+        ;;
+
+    codex)
+        if command -v codex &>/dev/null; then
+            codex "$FINAL_PROMPT"
+        else
+            echo "[ai] codex CLI not found." >&2
+            exit 1
+        fi
+        ;;
+
+    opencode|open-code)
+        if command -v opencode &>/dev/null; then
+            opencode "$FINAL_PROMPT"
+        else
+            echo "[ai] opencode CLI not found." >&2
+            exit 1
+        fi
+        ;;
+
+    aider)
+        if command -v aider &>/dev/null; then
+            aider --message "$FINAL_PROMPT"
+        else
+            echo "[ai] aider not found. Install: pip install aider-chat" >&2
+            exit 1
+        fi
+        ;;
+
+    *)
+        # Try to run as a raw command
+        if command -v "$TOOL" &>/dev/null; then
+            echo "$FINAL_PROMPT" | "$TOOL"
+        else
+            echo "[ai] Unknown tool: $TOOL" >&2
+            exit 1
+        fi
+        ;;
+esac
