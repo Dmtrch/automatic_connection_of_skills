@@ -101,10 +101,13 @@ if [ -d "$CLAUDE_DIR" ] && [ ! -L "$CLAUDE_DIR/skills" ]; then
 fi
 
 # Gemini CLI
-if [ -d "$GEMINI_DIR" ]; then
-    [ -d "$GEMINI_DIR/skills" ] && [ ! -L "$GEMINI_DIR/skills" ] && rm -rf "$GEMINI_DIR/skills"
-    [ ! -L "$GEMINI_DIR/skills" ] && ln -s "$SKILLS_ROOT/skills" "$GEMINI_DIR/skills"
-    log_success "~/.gemini/skills → ~/.shared-ai-skills/skills"
+# NOTE: Gemini CLI also scans ~/.agents/skills/ automatically.
+# We do NOT create a ~/.gemini/skills symlink to avoid "Skill conflict detected"
+# warnings caused by Gemini finding the same skills via both paths.
+# Skills reach Gemini via ~/.agents/skills → ~/.shared-ai-skills/skills.
+if [ -L "$GEMINI_DIR/skills" ]; then
+    rm "$GEMINI_DIR/skills"
+    log_success "Removed duplicate ~/.gemini/skills symlink (Gemini uses ~/.agents/skills)"
 fi
 
 # Codex CLI
@@ -129,6 +132,23 @@ if [ -d "$HOME/.cursor" ] && [ ! -L "$HOME/.cursor/skills" ]; then
     ln -s "$SKILLS_ROOT" "$HOME/.cursor/skills"
     log_success "~/.cursor/skills → ~/.shared-ai-skills/"
 fi
+
+# Sync top-level skill dirs into skills/ so Gemini/OpenCode can discover them.
+# Top-level layout: ~/.shared-ai-skills/<skill-name>/SKILL.md
+# skills/ layout:   ~/.shared-ai-skills/skills/<skill-name> → ../<skill-name>
+log_info "Syncing top-level skills into skills/ directory..."
+SYNCED=0
+for dir in "$SKILLS_ROOT"/*/; do
+    name=$(basename "$dir")
+    case "$name" in
+        skills|hooks|wrappers|__pycache__) continue ;;
+    esac
+    if [ -f "$dir/SKILL.md" ] && [ ! -L "$SKILLS_ROOT/skills/$name" ]; then
+        ln -s "../$name" "$SKILLS_ROOT/skills/$name"
+        SYNCED=$((SYNCED + 1))
+    fi
+done
+log_success "Synced $SYNCED new skill(s) into skills/ ($(ls "$SKILLS_ROOT/skills/" | wc -l | tr -d ' ') total)"
 
 # ─── Step 4: Install `ai` universal wrapper ───────────────────────────────────
 

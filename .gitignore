@@ -32,3 +32,4 @@ swift-expert/.git
 
 # skills/ symlink causes infinite recursion — add files explicitly below
 skills/
+.osgrep_index
