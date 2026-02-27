@@ -66,6 +66,23 @@ ai --dry-run "create a presentation about microservices"
 ai --list-skills
 ```
 
+#### Installing skills from the marketplace
+
+```bash
+# Install a skill from aitmpl.com/skills — auto-registers in registry.json and INDEX.md
+ai --add-skill creative-design/frontend-design
+ai --add-skill data-science/pandas-expert
+
+# Equivalent using dispatch.py directly
+python3 ~/.shared-ai-skills/dispatch.py add creative-design/frontend-design
+```
+
+The installer:
+1. Downloads via `npx claude-code-templates@latest --skill=<id> --yes`
+2. Extracts keywords from the skill's `SKILL.md` frontmatter and content
+3. Warns about potential duplicates (≥2 overlapping keywords with existing skills)
+4. Registers in `registry.json` and adds a row to `INDEX.md`
+
 #### `dispatch.py` directly
 
 ```bash
@@ -179,6 +196,26 @@ Each skill in `registry.json` has three trigger types (all case-insensitive):
 
 A skill is activated if **any one** trigger matches.
 
+### Bilingual Support (EN + RU)
+
+All 38 built-in skills have Russian trigger keywords. Prompts in Russian are detected automatically:
+
+```bash
+python3 dispatch.py detect "написать скрипт на питоне"
+# → SKILLS:python-pro
+
+python3 dispatch.py detect "спроектировать архитектуру системы"
+# → SKILLS:software-architecture
+```
+
+**Russian morphology normalization**: The dispatcher automatically strips common Russian case endings (`а`, `я`, `ы`, `и`, `е`, `у`, `ю`) before matching, so declined word forms work without listing every inflection in the registry:
+
+| Prompt word | Normalized | Matches keyword |
+|---|---|---|
+| `архитектуру` | `архитектур` | `архитектура` ✓ |
+| `микросервисов` | `микросервисо` | `микросервисы` → `микросервис` ✓ |
+| `агента` | `агент` | `агент` ✓ |
+
 ### Token Budget
 
 `dispatch.py` enforces limits when injecting skill content:
@@ -251,6 +288,23 @@ ai --dry-run "сделай презентацию о микросервисах"
 # Список всех зарегистрированных скиллов
 ai --list-skills
 ```
+
+#### Установка скиллов из маркетплейса
+
+```bash
+# Установить скилл с aitmpl.com/skills — автоматически регистрируется в registry.json и INDEX.md
+ai --add-skill creative-design/frontend-design
+ai --add-skill data-science/pandas-expert
+
+# То же самое через dispatch.py напрямую
+python3 ~/.shared-ai-skills/dispatch.py add creative-design/frontend-design
+```
+
+Установщик:
+1. Скачивает через `npx claude-code-templates@latest --skill=<id> --yes`
+2. Извлекает ключевые слова из фронтматтера и содержимого `SKILL.md`
+3. Предупреждает о возможных дубликатах (≥2 совпадающих ключевых слова с уже установленными)
+4. Регистрирует в `registry.json` и добавляет строку в `INDEX.md`
 
 #### `dispatch.py` напрямую
 
@@ -353,6 +407,26 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 | `task_patterns` | Regex-совпадение | `"write.*python"`, `"create.*\\.py"` |
 
 Скилл активируется, если совпадает **хотя бы один** триггер.
+
+### Двуязычная поддержка (EN + RU)
+
+Все 38 встроенных скиллов имеют тригерные слова на русском языке. Промпты на русском определяются автоматически:
+
+```bash
+python3 dispatch.py detect "написать скрипт на питоне"
+# → SKILLS:python-pro
+
+python3 dispatch.py detect "спроектировать архитектуру системы"
+# → SKILLS:software-architecture
+```
+
+**Нормализация падежей**: диспетчер автоматически убирает типичные падежные окончания (`а`, `я`, `ы`, `и`, `е`, `у`, `ю`) перед сравнением, поэтому все формы слов работают без перечисления каждого склонения в реестре:
+
+| Слово в промпте | Нормализованное | Ключевое слово в реестре |
+|---|---|---|
+| `архитектуру` | `архитектур` | `архитектура` ✓ |
+| `агента` | `агент` | `агент` ✓ |
+| `микросервисов` | `микросервисо` | `микросервисы` → `микросервис` ✓ |
 
 ### Бюджет токенов
 

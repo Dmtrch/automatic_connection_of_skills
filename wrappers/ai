@@ -13,6 +13,7 @@
 #   ai --no-inject "simple question"                  # skip skill injection
 #   ai --list-skills                                  # list available skills
 #   ai --dry-run "create a presentation"              # show what would be injected
+#   ai --add-skill creative-design/frontend-design    # install skill from aitmpl.com
 
 DISPATCH="$HOME/.shared-ai-skills/dispatch.py"
 SKILLS_ROOT="$HOME/.shared-ai-skills"
@@ -23,6 +24,7 @@ TOOL="claude"         # default tool
 NO_INJECT=false
 DRY_RUN=false
 LIST_SKILLS=false
+ADD_SKILL=""
 PROMPT=""
 
 while [[ $# -gt 0 ]]; do
@@ -31,18 +33,21 @@ while [[ $# -gt 0 ]]; do
         --no-inject)    NO_INJECT=true; shift ;;
         --dry-run)      DRY_RUN=true; shift ;;
         --list-skills)  LIST_SKILLS=true; shift ;;
+        --add-skill)    ADD_SKILL="$2"; shift 2 ;;
         --help|-h)
             echo "Usage: ai [options] \"your prompt\""
             echo ""
             echo "Options:"
-            echo "  -t, --tool TOOL    AI tool to use (claude|gemini|codex|opencode|aider)"
-            echo "  --no-inject        Skip skill injection"
-            echo "  --dry-run          Show detected skills without running"
-            echo "  --list-skills      List all available skills"
+            echo "  -t, --tool TOOL          AI tool to use (claude|gemini|codex|opencode|aider)"
+            echo "  --no-inject              Skip skill injection"
+            echo "  --dry-run                Show detected skills without running"
+            echo "  --list-skills            List all available skills"
+            echo "  --add-skill SKILL_ID     Install skill from aitmpl.com and register it"
             echo ""
             echo "Examples:"
             echo "  ai \"create a PowerPoint about AI\""
             echo "  ai -t gemini \"write a Python script to...\""
+            echo "  ai --add-skill creative-design/frontend-design"
             exit 0
             ;;
         *)              PROMPT="$PROMPT $1"; shift ;;
@@ -50,6 +55,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 PROMPT="${PROMPT# }"  # trim leading space
+
+# ─── Add skill mode ───────────────────────────────────────────────────────────
+
+if [ -n "$ADD_SKILL" ]; then
+    python3 "$DISPATCH" add "$ADD_SKILL"
+    exit $?
+fi
 
 # ─── List skills mode ─────────────────────────────────────────────────────────
 
