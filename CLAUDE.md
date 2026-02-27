@@ -69,8 +69,22 @@ The `skills/` subdirectory is symlinked from `~/.claude/skills/`, `~/.agents/ski
 | **Claude Code** | `~/.claude/CLAUDE.md` embeds `INDEX.md` content; hook injects SKILL.md at tool-call time | Skills in context from session start |
 | **Gemini CLI** | Scans `~/.agents/skills/*/SKILL.md` (lazy-loaded per `@skill-name`) | Do NOT symlink `~/.gemini/skills/` — Gemini also scans `~/.agents/`, causes conflicts |
 | **OpenCode** | Reads `INDEX.md` as a plain file in context, then reads `SKILL.md` on demand | No YAML frontmatter required; ask "какие skills у тебя есть?" to list all |
-| **Codex** | `~/.codex/instructions` → symlink to `~/.shared-ai-skills/` | Reads the whole directory as instructions |
+| **Codex** | `~/.codex/instructions` → symlink to `~/.shared-ai-skills/`; built-in TUI (`/skills`) to enable/disable | Token usage shown automatically on session exit |
 | **`ai` wrapper** | `dispatch.py inject` — injects SKILL.md content into prompt before routing | Works for all tools via CLI |
+
+### Checking Token Usage Per Tool
+
+| Tool | Command | When available |
+|---|---|---|
+| **Claude Code** | `/context` | Any time during session |
+| **Codex** | Automatic summary on exit: `Token usage: total=X input=Y (+ Z cached) output=W` | End of session only |
+| **Gemini CLI** | No built-in command | Estimate via file sizes |
+| **OpenCode** | No built-in command | Estimate via file sizes |
+
+Codex example output (session with all skills loaded):
+```
+Token usage: total=63 324  input=58 900 (+ 160 000 cached)  output=4 424 (reasoning 3 528)
+```
 
 ### Adding a New Skill
 1. Create `<skill-name>/SKILL.md` (or `skills/<skill-name>/SKILL.md` for document skills)
