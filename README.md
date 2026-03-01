@@ -143,7 +143,11 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 | Language / framework | `~/.shared-ai-skills/<skill>/SKILL.md` | `python-pro/SKILL.md` |
 | Document / plugin | `~/.shared-ai-skills/skills/<skill>/SKILL.md` | `skills/pptx/SKILL.md` |
 
-The `skills/` directory is symlinked into every supported AI tool's config directory.
+> **Note for Claude Code Skill tool discovery:** `~/.claude/skills` is symlinked to `~/.shared-ai-skills/` (the root), not to the `skills/` subdirectory. Claude Code scans `~/.claude/skills/*/SKILL.md` (one level deep), so skills in `skills/<name>/` are **not** automatically visible via the Skill tool. To expose them, create a top-level symlink:
+> ```bash
+> ln -s ~/.shared-ai-skills/skills/planning-with-files ~/.shared-ai-skills/planning-with-files
+> ```
+> Skills installed via `dispatch.py add` at the top level are discovered automatically.
 
 ### Supported AI Tools
 
@@ -356,6 +360,12 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 |---|---|---|
 | Языки / фреймворки | `~/.shared-ai-skills/<skill>/SKILL.md` | `python-pro/SKILL.md` |
 | Документы / плагины | `~/.shared-ai-skills/skills/<skill>/SKILL.md` | `skills/pptx/SKILL.md` |
+
+> **Важно для обнаружения через Skill tool в Claude Code:** `~/.claude/skills` симлинкован на `~/.shared-ai-skills/` (корень), а не на поддиректорию `skills/`. Claude Code сканирует `~/.claude/skills/*/SKILL.md` (один уровень), поэтому скиллы из `skills/<name>/` **не видны** через Skill tool автоматически. Для их подключения создайте симлинк на верхнем уровне:
+> ```bash
+> ln -s ~/.shared-ai-skills/skills/planning-with-files ~/.shared-ai-skills/planning-with-files
+> ```
+> Скиллы, установленные через `dispatch.py add` напрямую в корень, обнаруживаются автоматически.
 
 ### Поддерживаемые AI-инструменты
 
