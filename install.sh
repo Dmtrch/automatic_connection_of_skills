@@ -139,12 +139,15 @@ fi
 log_info "Syncing top-level skills into skills/ directory..."
 SYNCED=0
 for dir in "$SKILLS_ROOT"/*/; do
+    dir=${dir%/} # remove trailing slash
     name=$(basename "$dir")
     case "$name" in
         skills|hooks|wrappers|__pycache__|.*) continue ;;
     esac
-    if [ -f "$dir/SKILL.md" ] && [ ! -L "$SKILLS_ROOT/skills/$name" ]; then
-        ln -s "../$name" "$SKILLS_ROOT/skills/$name"
+    
+    # Only link if it's a real directory (not a link) and doesn't already exist in skills/
+    if [ -d "$dir" ] && [ ! -L "$dir" ] && [ -f "$dir/SKILL.md" ] && [ ! -e "$SKILLS_ROOT/skills/$name" ]; then
+        ln -snf "../$name" "$SKILLS_ROOT/skills/$name"
         SYNCED=$((SYNCED + 1))
     fi
 done
