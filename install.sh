@@ -141,7 +141,7 @@ SYNCED=0
 for dir in "$SKILLS_ROOT"/*/; do
     name=$(basename "$dir")
     case "$name" in
-        skills|hooks|wrappers|__pycache__) continue ;;
+        skills|hooks|wrappers|__pycache__|.*) continue ;;
     esac
     if [ -f "$dir/SKILL.md" ] && [ ! -L "$SKILLS_ROOT/skills/$name" ]; then
         ln -s "../$name" "$SKILLS_ROOT/skills/$name"
