@@ -1209,14 +1209,22 @@
           "скилл из github",
           "добавить навык из github",
           "install skill from github",
-          "добавить скилл"
+          "добавить скилл",
+          "добавь скилл",
+          "добавь навык",
+          "новый скилл из",
+          "skill из github",
+          "навык из github"
         ],
         "file_extensions": [],
         "task_patterns": [
           "install.*skill.*github",
           "add.*skill.*https://github",
           "установить.*скилл.*github",
-          "добавить.*навык.*из.*репозитори"
+          "добавить.*навык.*из.*репозитори",
+          "добавь.*github\\.com",
+          "skill.*из.*github\\.com",
+          "скилл.*из.*github\\.com"
         ]
       }
     }
