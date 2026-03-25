@@ -66,6 +66,30 @@ ai --dry-run "create a presentation about microservices"
 ai --list-skills
 ```
 
+#### Installing skills from GitHub
+
+The recommended way to install any external skill. Runs a mandatory security audit before installation.
+
+```bash
+# Install from a GitHub repository (security audit runs automatically)
+ai --add-skill https://github.com/USER/REPO
+
+# Equivalent using dispatch.py directly
+python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
+
+# For repos with multiple skills — pick a specific one
+python3 ~/.shared-ai-skills/dispatch.py add --npx \
+  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME"
+```
+
+The installer:
+1. Downloads `SKILL.md` to a temporary directory
+2. **Runs `skill-security-audit`** — checks for prompt injection, data exfiltration, file deletion, and network abuse
+3. On CRITICAL findings: blocks installation with no override
+4. On HIGH findings: blocks installation, asks for explicit `ДА` to continue
+5. Registers in `registry.json` and adds a row to `INDEX.md`
+6. Verifies symlinks for all AI tools (Claude Code, Gemini, Codex, OpenCode)
+
 #### Installing skills from the marketplace
 
 ```bash
@@ -122,7 +146,9 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 │   ├── pdf/SKILL.md
 │   ├── osgrep/SKILL.md
 │   ├── find-skills/SKILL.md
-│   └── planning-with-files/SKILL.md
+│   ├── planning-with-files/SKILL.md
+│   ├── skill-security-audit/SKILL.md   # Security audit before installing external skills
+│   └── install-skill-from-github/SKILL.md  # Install skills from GitHub with audit
 │
 ├── python-pro/SKILL.md         # Language / framework skills
 ├── typescript-pro/SKILL.md
@@ -161,6 +187,16 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 | Cursor | Symlinked `~/.cursor/skills/` |
 
 ### Adding a New Skill
+
+#### From GitHub (external skill — security audit required)
+
+```bash
+python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
+```
+
+This runs the full security audit automatically. See [Installing skills from GitHub](#installing-skills-from-github).
+
+#### From scratch (local skill)
 
 1. Create the skill file:
    ```bash
@@ -202,7 +238,7 @@ A skill is activated if **any one** trigger matches.
 
 ### Bilingual Support (EN + RU)
 
-All 38 built-in skills have Russian trigger keywords. Prompts in Russian are detected automatically:
+All 40 built-in skills have Russian trigger keywords. Prompts in Russian are detected automatically:
 
 ```bash
 python3 dispatch.py detect "написать скрипт на питоне"
@@ -293,6 +329,30 @@ ai --dry-run "сделай презентацию о микросервисах"
 ai --list-skills
 ```
 
+#### Установка скиллов из GitHub
+
+Рекомендуемый способ для любого внешнего скилла. Перед установкой автоматически запускается проверка безопасности.
+
+```bash
+# Установить из GitHub-репозитория (аудит безопасности запускается автоматически)
+ai --add-skill https://github.com/USER/REPO
+
+# То же самое через dispatch.py напрямую
+python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
+
+# Для репозиториев с несколькими скиллами — выбрать конкретный
+python3 ~/.shared-ai-skills/dispatch.py add --npx \
+  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME"
+```
+
+Установщик:
+1. Скачивает `SKILL.md` во временную директорию
+2. **Запускает `skill-security-audit`** — проверяет промпт-инъекции, утечку данных, удаление файлов, сетевые вызовы
+3. При CRITICAL-угрозах: установка заблокирована без возможности обхода
+4. При HIGH-угрозах: установка заблокирована, запрашивает явное `ДА` для продолжения
+5. Регистрирует в `registry.json` и добавляет строку в `INDEX.md`
+6. Проверяет симлинки для всех AI-инструментов (Claude Code, Gemini, Codex, OpenCode)
+
 #### Установка скиллов из маркетплейса
 
 ```bash
@@ -346,6 +406,8 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 │   ├── pptx/SKILL.md
 │   ├── docx/SKILL.md
 │   ├── xlsx/SKILL.md
+│   ├── skill-security-audit/SKILL.md        # Аудит безопасности перед установкой
+│   ├── install-skill-from-github/SKILL.md   # Установка скиллов из GitHub с аудитом
 │   └── ...
 │
 ├── python-pro/SKILL.md        # Языковые / фреймворковые скиллы
@@ -379,6 +441,16 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 | Cursor | Симлинк `~/.cursor/skills/` |
 
 ### Добавление нового скилла
+
+#### Из GitHub (внешний скилл — требуется аудит безопасности)
+
+```bash
+python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
+```
+
+Аудит безопасности запускается автоматически. Подробнее: [Установка скиллов из GitHub](#установка-скиллов-из-github).
+
+#### С нуля (локальный скилл)
 
 1. Создайте файл скилла:
    ```bash
@@ -420,7 +492,7 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 
 ### Двуязычная поддержка (EN + RU)
 
-Все 38 встроенных скиллов имеют тригерные слова на русском языке. Промпты на русском определяются автоматически:
+Все 40 встроенных скиллов имеют триггерные слова на русском языке. Промпты на русском определяются автоматически:
 
 ```bash
 python3 dispatch.py detect "написать скрипт на питоне"

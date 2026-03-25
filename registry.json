@@ -6,476 +6,1232 @@
     "skills_root": "~/.shared-ai-skills"
   },
   "skills": {
-
     "python-pro": {
       "path": "python-pro/SKILL.md",
       "description": "Python expert patterns and best practices",
       "triggers": {
-        "keywords": ["python", "py script", "python code", "python function", "python class",
-                     "питон", "написать на python", "python скрипт", "скрипт на питоне", "код на python"],
-        "file_extensions": [".py"],
-        "task_patterns": ["write.*python", "create.*\\.py", "python.*script", "implement.*python",
-                          "написать.*python", "создать.*скрипт"]
+        "keywords": [
+          "python",
+          "py script",
+          "python code",
+          "python function",
+          "python class",
+          "питон",
+          "написать на python",
+          "python скрипт",
+          "скрипт на питоне",
+          "код на python"
+        ],
+        "file_extensions": [
+          ".py"
+        ],
+        "task_patterns": [
+          "write.*python",
+          "create.*\\.py",
+          "python.*script",
+          "implement.*python",
+          "написать.*python",
+          "создать.*скрипт"
+        ]
       }
     },
-
     "typescript-pro": {
       "path": "typescript-pro/SKILL.md",
       "description": "TypeScript expert patterns",
       "triggers": {
-        "keywords": ["typescript", "ts file", "type-safe", "tsx", "type definitions", "interface ts", "enum ts",
-                     "типизация", "тайпскрипт", "типы typescript", "строгая типизация"],
-        "file_extensions": [".ts", ".tsx"],
-        "task_patterns": ["write.*typescript", "create.*\\.ts", "type.*annotation",
-                          "написать.*typescript", "типизировать"]
+        "keywords": [
+          "typescript",
+          "ts file",
+          "type-safe",
+          "tsx",
+          "type definitions",
+          "interface ts",
+          "enum ts",
+          "типизация",
+          "тайпскрипт",
+          "типы typescript",
+          "строгая типизация"
+        ],
+        "file_extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "task_patterns": [
+          "write.*typescript",
+          "create.*\\.ts",
+          "type.*annotation",
+          "написать.*typescript",
+          "типизировать"
+        ]
       }
     },
-
     "react-patterns": {
       "path": "react-patterns/SKILL.md",
       "description": "React component patterns, hooks, state management",
       "triggers": {
-        "keywords": ["react", "jsx", "hooks", "usestate", "useeffect", "react component", "react app", "shadcn", "next.js", "nextjs",
-                     "реакт", "реакт компонент", "хуки react", "управление состоянием", "реакт приложение"],
-        "file_extensions": [".jsx", ".tsx"],
-        "task_patterns": ["create.*component", "build.*react", "react.*hook", "state.*management",
-                          "создать.*компонент", "реакт.*хук"]
+        "keywords": [
+          "react",
+          "jsx",
+          "hooks",
+          "usestate",
+          "useeffect",
+          "react component",
+          "react app",
+          "shadcn",
+          "next.js",
+          "nextjs",
+          "реакт",
+          "реакт компонент",
+          "хуки react",
+          "управление состоянием",
+          "реакт приложение"
+        ],
+        "file_extensions": [
+          ".jsx",
+          ".tsx"
+        ],
+        "task_patterns": [
+          "create.*component",
+          "build.*react",
+          "react.*hook",
+          "state.*management",
+          "создать.*компонент",
+          "реакт.*хук"
+        ]
       }
     },
-
     "async-python-patterns": {
       "path": "async-python-patterns/SKILL.md",
       "description": "Async/await, asyncio, concurrent Python",
       "triggers": {
-        "keywords": ["asyncio", "async def", "async python", "coroutine", "aiohttp", "concurrent", "event loop", "await",
-                     "асинхронный python", "корутина", "параллельные задачи python", "асинхронность", "asyncio питон"],
+        "keywords": [
+          "asyncio",
+          "async def",
+          "async python",
+          "coroutine",
+          "aiohttp",
+          "concurrent",
+          "event loop",
+          "await",
+          "асинхронный python",
+          "корутина",
+          "параллельные задачи python",
+          "асинхронность",
+          "asyncio питон"
+        ],
         "file_extensions": [],
-        "task_patterns": ["async.*python", "concurrent.*task", "parallel.*python",
-                          "асинхронн.*python", "параллельн.*задач"]
+        "task_patterns": [
+          "async.*python",
+          "concurrent.*task",
+          "parallel.*python",
+          "асинхронн.*python",
+          "параллельн.*задач"
+        ]
       }
     },
-
     "cpp-pro": {
       "path": "cpp-pro/SKILL.md",
       "description": "C++ expert patterns and modern C++",
       "triggers": {
-        "keywords": ["c++", "cpp", "c plus plus", "stl", "cmake", "g++", "clang", "template c++", "raii",
-                     "си плюс плюс", "плюсы", "с++", "сишный код", "cmake проект"],
-        "file_extensions": [".cpp", ".cc", ".cxx", ".h", ".hpp"],
-        "task_patterns": ["write.*c\\+\\+", "implement.*cpp", "create.*cmake",
-                          "написать.*c\\+\\+", "создать.*cmake"]
+        "keywords": [
+          "c++",
+          "cpp",
+          "c plus plus",
+          "stl",
+          "cmake",
+          "g++",
+          "clang",
+          "template c++",
+          "raii",
+          "си плюс плюс",
+          "плюсы",
+          "с++",
+          "сишный код",
+          "cmake проект"
+        ],
+        "file_extensions": [
+          ".cpp",
+          ".cc",
+          ".cxx",
+          ".h",
+          ".hpp"
+        ],
+        "task_patterns": [
+          "write.*c\\+\\+",
+          "implement.*cpp",
+          "create.*cmake",
+          "написать.*c\\+\\+",
+          "создать.*cmake"
+        ]
       }
     },
-
     "swift-expert": {
       "path": "swift-expert/SKILL.md",
       "description": "Swift / SwiftUI / iOS development",
       "triggers": {
-        "keywords": ["swift", "swiftui", "ios", "xcode", "uikit", "combine", "objective-c", "appkit", "macos app",
-                     "swift приложение", "ios разработка", "яблоко приложение", "разработка ios"],
-        "file_extensions": [".swift"],
-        "task_patterns": ["ios.*app", "swiftui.*view", "swift.*struct",
-                          "ios.*приложение", "swift.*вью"]
+        "keywords": [
+          "swift",
+          "swiftui",
+          "ios",
+          "xcode",
+          "uikit",
+          "combine",
+          "objective-c",
+          "appkit",
+          "macos app",
+          "swift приложение",
+          "ios разработка",
+          "яблоко приложение",
+          "разработка ios"
+        ],
+        "file_extensions": [
+          ".swift"
+        ],
+        "task_patterns": [
+          "ios.*app",
+          "swiftui.*view",
+          "swift.*struct",
+          "ios.*приложение",
+          "swift.*вью"
+        ]
       }
     },
-
     "kotlin-specialist": {
       "path": "kotlin-specialist/SKILL.md",
       "description": "Kotlin / Android / JVM development",
       "triggers": {
-        "keywords": ["kotlin", "android", "jetpack compose", "coroutines kotlin", "android studio", "gradle kotlin", "jvm kotlin",
-                     "котлин", "андроид котлин", "джетпак компоуз", "корутины котлин"],
-        "file_extensions": [".kt", ".kts"],
-        "task_patterns": ["android.*app", "kotlin.*class", "jetpack.*compose",
-                          "андроид.*приложение", "котлин.*класс"]
+        "keywords": [
+          "kotlin",
+          "android",
+          "jetpack compose",
+          "coroutines kotlin",
+          "android studio",
+          "gradle kotlin",
+          "jvm kotlin",
+          "котлин",
+          "андроид котлин",
+          "джетпак компоуз",
+          "корутины котлин"
+        ],
+        "file_extensions": [
+          ".kt",
+          ".kts"
+        ],
+        "task_patterns": [
+          "android.*app",
+          "kotlin.*class",
+          "jetpack.*compose",
+          "андроид.*приложение",
+          "котлин.*класс"
+        ]
       }
     },
-
     "android-dev": {
       "path": "android-dev/SKILL.md",
       "description": "Android development (Java + Kotlin)",
       "triggers": {
-        "keywords": ["android", "android dev", "android app", "android studio", "apk", "android manifest", "android sdk", "room database", "retrofit android",
-                     "андроид", "андроид приложение", "андроид разработка", "разработка под андроид"],
-        "file_extensions": [".xml", ".gradle"],
-        "task_patterns": ["build.*android", "create.*activity", "android.*fragment",
-                          "создать.*андроид", "андроид.*активити"]
+        "keywords": [
+          "android",
+          "android dev",
+          "android app",
+          "android studio",
+          "apk",
+          "android manifest",
+          "android sdk",
+          "room database",
+          "retrofit android",
+          "андроид",
+          "андроид приложение",
+          "андроид разработка",
+          "разработка под андроид"
+        ],
+        "file_extensions": [
+          ".xml",
+          ".gradle"
+        ],
+        "task_patterns": [
+          "build.*android",
+          "create.*activity",
+          "android.*fragment",
+          "создать.*андроид",
+          "андроид.*активити"
+        ]
       }
     },
-
     "aws-serverless": {
       "path": "aws-serverless/SKILL.md",
       "description": "AWS Lambda, Serverless, CloudFormation, SAM",
       "triggers": {
-        "keywords": ["aws", "lambda", "serverless", "cloudformation", "sam template", "api gateway", "dynamodb", "s3", "cdk aws", "terraform aws",
-                     "амазон облако", "серверлесс", "бессерверный", "лямбда функция", "облако aws"],
-        "file_extensions": [".yaml", ".json", ".tf"],
-        "task_patterns": ["aws.*lambda", "serverless.*function", "deploy.*aws",
-                          "развернуть.*aws", "бессерверн.*функция"]
+        "keywords": [
+          "aws",
+          "lambda",
+          "serverless",
+          "cloudformation",
+          "sam template",
+          "api gateway",
+          "dynamodb",
+          "s3",
+          "cdk aws",
+          "terraform aws",
+          "амазон облако",
+          "серверлесс",
+          "бессерверный",
+          "лямбда функция",
+          "облако aws"
+        ],
+        "file_extensions": [
+          ".yaml",
+          ".json",
+          ".tf"
+        ],
+        "task_patterns": [
+          "aws.*lambda",
+          "serverless.*function",
+          "deploy.*aws",
+          "развернуть.*aws",
+          "бессерверн.*функция"
+        ]
       }
     },
-
     "software-architecture": {
       "path": "software-architecture/SKILL.md",
       "description": "System design, software architecture patterns",
       "triggers": {
-        "keywords": ["architecture", "system design", "design pattern", "microservices", "monolith", "event-driven", "hexagonal", "clean architecture", "SOLID",
-                     "архитектура", "проектирование системы", "микросервисы", "монолит", "шаблон проектирования", "событийная архитектура"],
+        "keywords": [
+          "architecture",
+          "system design",
+          "design pattern",
+          "microservices",
+          "monolith",
+          "event-driven",
+          "hexagonal",
+          "clean architecture",
+          "SOLID",
+          "архитектура",
+          "проектирование системы",
+          "микросервисы",
+          "монолит",
+          "шаблон проектирования",
+          "событийная архитектура"
+        ],
         "file_extensions": [],
-        "task_patterns": ["design.*system", "architect.*solution", "system.*diagram",
-                          "спроектировать.*систему", "архитектура.*решения"]
+        "task_patterns": [
+          "design.*system",
+          "architect.*solution",
+          "system.*diagram",
+          "спроектировать.*систему",
+          "архитектура.*решения"
+        ]
       }
     },
-
     "api-design-principles": {
       "path": "api-design-principles/SKILL.md",
       "description": "REST/GraphQL/gRPC API design principles",
       "triggers": {
-        "keywords": ["api design", "rest api", "graphql", "grpc", "openapi", "swagger", "endpoint design", "api versioning",
-                     "проектирование api", "разработка api", "rest апи", "апи дизайн", "конечные точки api"],
-        "file_extensions": [".yaml", ".json"],
-        "task_patterns": ["design.*api", "create.*endpoint", "rest.*api",
-                          "спроектировать.*api", "создать.*эндпоинт"]
+        "keywords": [
+          "api design",
+          "rest api",
+          "graphql",
+          "grpc",
+          "openapi",
+          "swagger",
+          "endpoint design",
+          "api versioning",
+          "проектирование api",
+          "разработка api",
+          "rest апи",
+          "апи дизайн",
+          "конечные точки api"
+        ],
+        "file_extensions": [
+          ".yaml",
+          ".json"
+        ],
+        "task_patterns": [
+          "design.*api",
+          "create.*endpoint",
+          "rest.*api",
+          "спроектировать.*api",
+          "создать.*эндпоинт"
+        ]
       }
     },
-
     "api-patterns": {
       "path": "api-patterns/SKILL.md",
       "description": "API integration patterns (retry, circuit breaker, etc.)",
       "triggers": {
-        "keywords": ["api pattern", "retry logic", "circuit breaker", "rate limiting", "api client", "http client", "pagination api",
-                     "паттерн api", "повторные попытки", "автовыключатель", "ограничение запросов", "пагинация api"],
+        "keywords": [
+          "api pattern",
+          "retry logic",
+          "circuit breaker",
+          "rate limiting",
+          "api client",
+          "http client",
+          "pagination api",
+          "паттерн api",
+          "повторные попытки",
+          "автовыключатель",
+          "ограничение запросов",
+          "пагинация api"
+        ],
         "file_extensions": [],
-        "task_patterns": ["api.*client", "http.*request", "fetch.*api",
-                          "http.*запрос", "клиент.*api"]
+        "task_patterns": [
+          "api.*client",
+          "http.*request",
+          "fetch.*api",
+          "http.*запрос",
+          "клиент.*api"
+        ]
       }
     },
-
     "api-security-best-practices": {
       "path": "api-security-best-practices/SKILL.md",
       "description": "API security: auth, JWT, OAuth, OWASP",
       "triggers": {
-        "keywords": ["api security", "jwt", "oauth", "authentication", "authorization", "api key", "owasp", "cors", "csrf", "xss prevention",
-                     "безопасность api", "аутентификация", "авторизация", "защита api", "токен доступа"],
+        "keywords": [
+          "api security",
+          "jwt",
+          "oauth",
+          "authentication",
+          "authorization",
+          "api key",
+          "owasp",
+          "cors",
+          "csrf",
+          "xss prevention",
+          "безопасность api",
+          "аутентификация",
+          "авторизация",
+          "защита api",
+          "токен доступа"
+        ],
         "file_extensions": [],
-        "task_patterns": ["secure.*api", "auth.*endpoint", "implement.*jwt",
-                          "защитить.*api", "аутентификация.*api"]
+        "task_patterns": [
+          "secure.*api",
+          "auth.*endpoint",
+          "implement.*jwt",
+          "защитить.*api",
+          "аутентификация.*api"
+        ]
       }
     },
-
     "api-documentation-generator": {
       "path": "api-documentation-generator/SKILL.md",
       "description": "Generate API documentation (OpenAPI, Swagger, etc.)",
       "triggers": {
-        "keywords": ["api docs", "api documentation", "document api", "openapi spec", "swagger file", "generate docs",
-                     "документация api", "задокументировать api", "openapi спецификация", "сгенерировать документацию"],
-        "file_extensions": [".yaml", ".json", ".md"],
-        "task_patterns": ["document.*api", "generate.*docs", "create.*openapi",
-                          "задокументировать.*api", "создать.*документацию"]
+        "keywords": [
+          "api docs",
+          "api documentation",
+          "document api",
+          "openapi spec",
+          "swagger file",
+          "generate docs",
+          "документация api",
+          "задокументировать api",
+          "openapi спецификация",
+          "сгенерировать документацию"
+        ],
+        "file_extensions": [
+          ".yaml",
+          ".json",
+          ".md"
+        ],
+        "task_patterns": [
+          "document.*api",
+          "generate.*docs",
+          "create.*openapi",
+          "задокументировать.*api",
+          "создать.*документацию"
+        ]
       }
     },
-
     "domain-driven-design": {
       "path": "domain-driven-design/SKILL.md",
       "description": "DDD overview — strategic + tactical patterns",
       "triggers": {
-        "keywords": ["domain driven design", "ddd", "ubiquitous language", "bounded context", "domain model", "domain expert",
-                     "предметно-ориентированное проектирование", "доменное проектирование", "единый язык", "доменная модель"],
+        "keywords": [
+          "domain driven design",
+          "ddd",
+          "ubiquitous language",
+          "bounded context",
+          "domain model",
+          "domain expert",
+          "предметно-ориентированное проектирование",
+          "доменное проектирование",
+          "единый язык",
+          "доменная модель"
+        ],
         "file_extensions": [],
-        "task_patterns": ["apply.*ddd", "domain.*model", "bounded.*context",
-                          "применить.*ddd", "доменн.*модель"]
+        "task_patterns": [
+          "apply.*ddd",
+          "domain.*model",
+          "bounded.*context",
+          "применить.*ddd",
+          "доменн.*модель"
+        ]
       }
     },
-
     "ddd-strategic-design": {
       "path": "ddd-strategic-design/SKILL.md",
       "description": "DDD strategic: bounded contexts, context maps",
       "triggers": {
-        "keywords": ["strategic ddd", "context map", "subdomain", "core domain", "context mapping", "anti-corruption layer", "bounded context", "bounded contexts",
-                     "стратегический ddd", "ограниченный контекст", "карта контекстов", "поддомен", "защитный уровень"],
+        "keywords": [
+          "strategic ddd",
+          "context map",
+          "subdomain",
+          "core domain",
+          "context mapping",
+          "anti-corruption layer",
+          "bounded context",
+          "bounded contexts",
+          "стратегический ddd",
+          "ограниченный контекст",
+          "карта контекстов",
+          "поддомен",
+          "защитный уровень"
+        ],
         "file_extensions": [],
-        "task_patterns": ["map.*context", "identify.*domain", "split.*domain",
-                          "карта.*контекст", "выделить.*домен"]
+        "task_patterns": [
+          "map.*context",
+          "identify.*domain",
+          "split.*domain",
+          "карта.*контекст",
+          "выделить.*домен"
+        ]
       }
     },
-
     "ddd-tactical-patterns": {
       "path": "ddd-tactical-patterns/SKILL.md",
       "description": "DDD tactical: aggregates, repositories, value objects",
       "triggers": {
-        "keywords": ["aggregate", "value object", "repository pattern", "domain event", "entity ddd", "factory pattern ddd", "specification pattern",
-                     "агрегат", "объект-значение", "репозиторий ddd", "доменное событие", "сущность ddd"],
+        "keywords": [
+          "aggregate",
+          "value object",
+          "repository pattern",
+          "domain event",
+          "entity ddd",
+          "factory pattern ddd",
+          "specification pattern",
+          "агрегат",
+          "объект-значение",
+          "репозиторий ddd",
+          "доменное событие",
+          "сущность ddd"
+        ],
         "file_extensions": [],
-        "task_patterns": ["create.*aggregate", "implement.*repository", "design.*entity",
-                          "создать.*агрегат", "реализовать.*репозиторий"]
+        "task_patterns": [
+          "create.*aggregate",
+          "implement.*repository",
+          "design.*entity",
+          "создать.*агрегат",
+          "реализовать.*репозиторий"
+        ]
       }
     },
-
     "architecture-decision-records": {
       "path": "architecture-decision-records/SKILL.md",
       "description": "ADR — Architecture Decision Records",
       "triggers": {
-        "keywords": ["adr", "architecture decision", "decision record", "technical decision", "why we chose", "technology choice",
-                     "архитектурное решение", "запись решения", "почему выбрали", "технологическое решение", "зафиксировать решение"],
-        "file_extensions": [".md"],
-        "task_patterns": ["write.*adr", "document.*decision", "create.*adr",
-                          "написать.*adr", "зафиксировать.*решение"]
+        "keywords": [
+          "adr",
+          "architecture decision",
+          "decision record",
+          "technical decision",
+          "why we chose",
+          "technology choice",
+          "архитектурное решение",
+          "запись решения",
+          "почему выбрали",
+          "технологическое решение",
+          "зафиксировать решение"
+        ],
+        "file_extensions": [
+          ".md"
+        ],
+        "task_patterns": [
+          "write.*adr",
+          "document.*decision",
+          "create.*adr",
+          "написать.*adr",
+          "зафиксировать.*решение"
+        ]
       }
     },
-
     "test-driven-development": {
       "path": "test-driven-development/SKILL.md",
       "description": "TDD workflow: red-green-refactor",
       "triggers": {
-        "keywords": ["tdd", "test driven", "red green refactor", "write test first", "failing test", "test first",
-                     "разработка через тесты", "тесты сначала", "сначала тест", "красный зелёный рефакторинг"],
+        "keywords": [
+          "tdd",
+          "test driven",
+          "red green refactor",
+          "write test first",
+          "failing test",
+          "test first",
+          "разработка через тесты",
+          "тесты сначала",
+          "сначала тест",
+          "красный зелёный рефакторинг"
+        ],
         "file_extensions": [],
-        "task_patterns": ["tdd.*approach", "test.*first", "write.*test.*then",
-                          "разработка.*через.*тест", "сначала.*тест"]
+        "task_patterns": [
+          "tdd.*approach",
+          "test.*first",
+          "write.*test.*then",
+          "разработка.*через.*тест",
+          "сначала.*тест"
+        ]
       }
     },
-
     "testing-patterns": {
       "path": "testing-patterns/SKILL.md",
       "description": "Unit, integration, e2e testing patterns",
       "triggers": {
-        "keywords": ["unit test", "integration test", "e2e test", "pytest", "jest", "mock", "stub", "fixture", "test coverage", "snapshot test",
-                     "юнит тест", "модульный тест", "интеграционный тест", "мок", "покрытие тестами", "e2e тест"],
-        "file_extensions": ["_test.py", ".test.ts", ".spec.ts", "_spec.py"],
-        "task_patterns": ["write.*test", "add.*test", "test.*function",
-                          "написать.*тест", "добавить.*тест"]
+        "keywords": [
+          "unit test",
+          "integration test",
+          "e2e test",
+          "pytest",
+          "jest",
+          "mock",
+          "stub",
+          "fixture",
+          "test coverage",
+          "snapshot test",
+          "юнит тест",
+          "модульный тест",
+          "интеграционный тест",
+          "мок",
+          "покрытие тестами",
+          "e2e тест"
+        ],
+        "file_extensions": [
+          "_test.py",
+          ".test.ts",
+          ".spec.ts",
+          "_spec.py"
+        ],
+        "task_patterns": [
+          "write.*test",
+          "add.*test",
+          "test.*function",
+          "написать.*тест",
+          "добавить.*тест"
+        ]
       }
     },
-
     "application-performance": {
       "path": "application-performance-performance-optimization/SKILL.md",
       "description": "Performance optimization, profiling, benchmarking",
       "triggers": {
-        "keywords": ["performance", "optimization", "profiling", "benchmark", "bottleneck", "latency", "throughput", "memory leak", "slow", "optimize speed",
-                     "производительность", "оптимизация", "профилирование", "узкое место", "задержка", "медленно работает", "утечка памяти"],
+        "keywords": [
+          "performance",
+          "optimization",
+          "profiling",
+          "benchmark",
+          "bottleneck",
+          "latency",
+          "throughput",
+          "memory leak",
+          "slow",
+          "optimize speed",
+          "производительность",
+          "оптимизация",
+          "профилирование",
+          "узкое место",
+          "задержка",
+          "медленно работает",
+          "утечка памяти"
+        ],
         "file_extensions": [],
-        "task_patterns": ["optimize.*performance", "profile.*code", "reduce.*latency", "speed.*up",
-                          "оптимизировать.*производительность", "ускорить.*код"]
+        "task_patterns": [
+          "optimize.*performance",
+          "profile.*code",
+          "reduce.*latency",
+          "speed.*up",
+          "оптимизировать.*производительность",
+          "ускорить.*код"
+        ]
       }
     },
-
     "ai-agents-architect": {
       "path": "ai-agents-architect/SKILL.md",
       "description": "AI agent system architecture design",
       "triggers": {
-        "keywords": ["ai agent", "agent architecture", "agent system", "llm agent", "agent design", "intelligent agent",
-                     "ии агент", "архитектура агента", "система агентов", "разработать агента", "интеллектуальный агент"],
+        "keywords": [
+          "ai agent",
+          "agent architecture",
+          "agent system",
+          "llm agent",
+          "agent design",
+          "intelligent agent",
+          "ии агент",
+          "архитектура агента",
+          "система агентов",
+          "разработать агента",
+          "интеллектуальный агент"
+        ],
         "file_extensions": [],
-        "task_patterns": ["design.*agent", "architect.*ai", "build.*agent.*system",
-                          "спроектировать.*агента", "создать.*систему.*агентов"]
+        "task_patterns": [
+          "design.*agent",
+          "architect.*ai",
+          "build.*agent.*system",
+          "спроектировать.*агента",
+          "создать.*систему.*агентов"
+        ]
       }
     },
-
     "ai-engineer": {
       "path": "ai-engineer/SKILL.md",
       "description": "AI/ML engineering: LLMs, embeddings, RAG",
       "triggers": {
-        "keywords": ["ai engineering", "ml engineering", "llm", "embedding", "rag", "vector store", "langchain", "llamaindex", "fine-tuning", "model serving",
-                     "инженерия ии", "языковая модель", "векторный поиск", "rag система", "эмбеддинги", "дообучение модели"],
+        "keywords": [
+          "ai engineering",
+          "ml engineering",
+          "llm",
+          "embedding",
+          "rag",
+          "vector store",
+          "langchain",
+          "llamaindex",
+          "fine-tuning",
+          "model serving",
+          "инженерия ии",
+          "языковая модель",
+          "векторный поиск",
+          "rag система",
+          "эмбеддинги",
+          "дообучение модели"
+        ],
         "file_extensions": [],
-        "task_patterns": ["build.*rag", "implement.*llm", "create.*embedding",
-                          "создать.*rag", "реализовать.*llm"]
+        "task_patterns": [
+          "build.*rag",
+          "implement.*llm",
+          "create.*embedding",
+          "создать.*rag",
+          "реализовать.*llm"
+        ]
       }
     },
-
     "ai-product": {
       "path": "ai-product/SKILL.md",
       "description": "AI product design and strategy",
       "triggers": {
-        "keywords": ["ai product", "ai feature", "product ai", "ai roadmap", "ai strategy", "ai ux", "human-ai interaction",
-                     "ии продукт", "ии функция", "продукт с ии", "дорожная карта ии", "стратегия ии", "взаимодействие человек-ии"],
+        "keywords": [
+          "ai product",
+          "ai feature",
+          "product ai",
+          "ai roadmap",
+          "ai strategy",
+          "ai ux",
+          "human-ai interaction",
+          "ии продукт",
+          "ии функция",
+          "продукт с ии",
+          "дорожная карта ии",
+          "стратегия ии",
+          "взаимодействие человек-ии"
+        ],
         "file_extensions": [],
-        "task_patterns": ["design.*ai.*product", "build.*ai.*feature",
-                          "спроектировать.*ии.*продукт", "создать.*ии.*функцию"]
+        "task_patterns": [
+          "design.*ai.*product",
+          "build.*ai.*feature",
+          "спроектировать.*ии.*продукт",
+          "создать.*ии.*функцию"
+        ]
       }
     },
-
     "agent-evaluation": {
       "path": "agent-evaluation/SKILL.md",
       "description": "Evaluate and benchmark AI agents",
       "triggers": {
-        "keywords": ["evaluate agent", "agent benchmark", "agent performance", "test agent", "agent metrics", "evals agent",
-                     "оценка агента", "бенчмарк агента", "тестирование агента", "метрики агента", "проверить агента"],
+        "keywords": [
+          "evaluate agent",
+          "agent benchmark",
+          "agent performance",
+          "test agent",
+          "agent metrics",
+          "evals agent",
+          "оценка агента",
+          "бенчмарк агента",
+          "тестирование агента",
+          "метрики агента",
+          "проверить агента"
+        ],
         "file_extensions": [],
-        "task_patterns": ["evaluate.*agent", "benchmark.*agent", "measure.*agent",
-                          "оценить.*агента", "протестировать.*агента"]
+        "task_patterns": [
+          "evaluate.*agent",
+          "benchmark.*agent",
+          "measure.*agent",
+          "оценить.*агента",
+          "протестировать.*агента"
+        ]
       }
     },
-
     "agent-memory-mcp": {
       "path": "agent-memory-mcp/SKILL.md",
       "description": "Agent memory via MCP",
       "triggers": {
-        "keywords": ["agent memory mcp", "memory mcp", "persistent agent", "mcp memory", "memory tool",
-                     "память через mcp", "память агента mcp", "постоянная память агента", "mcp инструмент памяти"],
+        "keywords": [
+          "agent memory mcp",
+          "memory mcp",
+          "persistent agent",
+          "mcp memory",
+          "memory tool",
+          "память через mcp",
+          "память агента mcp",
+          "постоянная память агента",
+          "mcp инструмент памяти"
+        ],
         "file_extensions": [],
-        "task_patterns": ["add.*memory.*mcp", "persist.*agent.*state",
-                          "добавить.*память.*mcp", "сохранить.*состояние.*агента"]
+        "task_patterns": [
+          "add.*memory.*mcp",
+          "persist.*agent.*state",
+          "добавить.*память.*mcp",
+          "сохранить.*состояние.*агента"
+        ]
       }
     },
-
     "agent-memory-systems": {
       "path": "agent-memory-systems/SKILL.md",
       "description": "Agent memory architecture: short/long-term, episodic",
       "triggers": {
-        "keywords": ["agent memory", "memory system", "long-term memory", "episodic memory", "semantic memory", "working memory agent",
-                     "память агента", "долгосрочная память", "эпизодическая память", "семантическая память", "архитектура памяти"],
+        "keywords": [
+          "agent memory",
+          "memory system",
+          "long-term memory",
+          "episodic memory",
+          "semantic memory",
+          "working memory agent",
+          "память агента",
+          "долгосрочная память",
+          "эпизодическая память",
+          "семантическая память",
+          "архитектура памяти"
+        ],
         "file_extensions": [],
-        "task_patterns": ["design.*memory", "implement.*memory.*system",
-                          "спроектировать.*память", "реализовать.*систему.*памяти"]
+        "task_patterns": [
+          "design.*memory",
+          "implement.*memory.*system",
+          "спроектировать.*память",
+          "реализовать.*систему.*памяти"
+        ]
       }
     },
-
     "agent-orchestration-improve": {
       "path": "agent-orchestration-improve-agent/SKILL.md",
       "description": "Improve existing agent performance and reliability",
       "triggers": {
-        "keywords": ["improve agent", "agent reliability", "optimize agent", "agent loop", "agent improvement", "better agent",
-                     "улучшить агента", "надёжность агента", "оптимизировать агента", "цикл агента", "агент работает плохо"],
+        "keywords": [
+          "improve agent",
+          "agent reliability",
+          "optimize agent",
+          "agent loop",
+          "agent improvement",
+          "better agent",
+          "улучшить агента",
+          "надёжность агента",
+          "оптимизировать агента",
+          "цикл агента",
+          "агент работает плохо"
+        ],
         "file_extensions": [],
-        "task_patterns": ["improve.*agent", "fix.*agent", "optimize.*agent.*loop",
-                          "улучшить.*агента", "исправить.*агента"]
+        "task_patterns": [
+          "improve.*agent",
+          "fix.*agent",
+          "optimize.*agent.*loop",
+          "улучшить.*агента",
+          "исправить.*агента"
+        ]
       }
     },
-
     "agent-orchestration-multi-agent": {
       "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
       "description": "Multi-agent orchestration and optimization",
       "triggers": {
-        "keywords": ["multi-agent", "multi agent", "agent orchestration", "agent coordination", "swarm", "agent team", "parallel agents",
-                     "мультиагент", "оркестрация агентов", "координация агентов", "рой агентов", "команда агентов"],
+        "keywords": [
+          "multi-agent",
+          "multi agent",
+          "agent orchestration",
+          "agent coordination",
+          "swarm",
+          "agent team",
+          "parallel agents",
+          "мультиагент",
+          "оркестрация агентов",
+          "координация агентов",
+          "рой агентов",
+          "команда агентов"
+        ],
         "file_extensions": [],
-        "task_patterns": ["orchestrate.*agent", "coordinate.*agent", "multi.*agent.*system",
-                          "оркестрировать.*агентов", "координировать.*агентов"]
+        "task_patterns": [
+          "orchestrate.*agent",
+          "coordinate.*agent",
+          "multi.*agent.*system",
+          "оркестрировать.*агентов",
+          "координировать.*агентов"
+        ]
       }
     },
-
     "agent-tool-builder": {
       "path": "agent-tool-builder/SKILL.md",
       "description": "Build tools for AI agents",
       "triggers": {
-        "keywords": ["agent tool", "build tool", "tool calling", "function calling", "tool use", "create tool agent",
-                     "инструмент агента", "вызов инструментов", "вызов функций", "создать инструмент агента"],
+        "keywords": [
+          "agent tool",
+          "build tool",
+          "tool calling",
+          "function calling",
+          "tool use",
+          "create tool agent",
+          "инструмент агента",
+          "вызов инструментов",
+          "вызов функций",
+          "создать инструмент агента"
+        ],
         "file_extensions": [],
-        "task_patterns": ["build.*tool.*agent", "create.*function.*tool", "implement.*tool.*calling",
-                          "создать.*инструмент.*агента", "реализовать.*вызов.*инструментов"]
+        "task_patterns": [
+          "build.*tool.*agent",
+          "create.*function.*tool",
+          "implement.*tool.*calling",
+          "создать.*инструмент.*агента",
+          "реализовать.*вызов.*инструментов"
+        ]
       }
     },
-
     "autonomous-agents": {
       "path": "autonomous-agents/SKILL.md",
       "description": "Autonomous agent design and implementation",
       "triggers": {
-        "keywords": ["autonomous agent", "self-directed", "autonomous ai", "agent loop", "react agent", "plan act observe",
-                     "автономный агент", "самостоятельный агент", "самоуправляемый агент", "автономный ии"],
+        "keywords": [
+          "autonomous agent",
+          "self-directed",
+          "autonomous ai",
+          "agent loop",
+          "react agent",
+          "plan act observe",
+          "автономный агент",
+          "самостоятельный агент",
+          "самоуправляемый агент",
+          "автономный ии"
+        ],
         "file_extensions": [],
-        "task_patterns": ["build.*autonomous", "create.*self.*directed", "implement.*agent.*loop",
-                          "создать.*автономного.*агента", "реализовать.*цикл.*агента"]
+        "task_patterns": [
+          "build.*autonomous",
+          "create.*self.*directed",
+          "implement.*agent.*loop",
+          "создать.*автономного.*агента",
+          "реализовать.*цикл.*агента"
+        ]
       }
     },
-
     "autonomous-agent-patterns": {
       "path": "autonomous-agent-patterns/SKILL.md",
       "description": "Patterns for autonomous agents (ReAct, CoT, ToT)",
       "triggers": {
-        "keywords": ["react pattern", "chain of thought", "tree of thought", "reflection agent", "self-critique", "agent pattern",
-                     "цепочка мышления", "дерево мышления", "рефлексия агента", "самокритика агента", "паттерн агента"],
+        "keywords": [
+          "react pattern",
+          "chain of thought",
+          "tree of thought",
+          "reflection agent",
+          "self-critique",
+          "agent pattern",
+          "цепочка мышления",
+          "дерево мышления",
+          "рефлексия агента",
+          "самокритика агента",
+          "паттерн агента"
+        ],
         "file_extensions": [],
-        "task_patterns": ["apply.*react.*pattern", "use.*cot", "implement.*reflection",
-                          "применить.*цепочку.*мышления", "реализовать.*рефлексию"]
+        "task_patterns": [
+          "apply.*react.*pattern",
+          "use.*cot",
+          "implement.*reflection",
+          "применить.*цепочку.*мышления",
+          "реализовать.*рефлексию"
+        ]
       }
     },
-
     "multi-agent-patterns": {
       "path": "multi-agent-patterns/SKILL.md",
       "description": "Multi-agent coordination patterns",
       "triggers": {
-        "keywords": ["multi-agent pattern", "supervisor agent", "supervisor", "worker agent", "hierarchical agent", "agent communication", "message passing",
-                     "мультиагент паттерн", "агент-супервизор", "агент-исполнитель", "иерархия агентов", "передача сообщений"],
+        "keywords": [
+          "multi-agent pattern",
+          "supervisor agent",
+          "supervisor",
+          "worker agent",
+          "hierarchical agent",
+          "agent communication",
+          "message passing",
+          "мультиагент паттерн",
+          "агент-супервизор",
+          "агент-исполнитель",
+          "иерархия агентов",
+          "передача сообщений"
+        ],
         "file_extensions": [],
-        "task_patterns": ["design.*multi.*agent", "implement.*supervisor",
-                          "спроектировать.*мультиагент", "реализовать.*супервизора"]
+        "task_patterns": [
+          "design.*multi.*agent",
+          "implement.*supervisor",
+          "спроектировать.*мультиагент",
+          "реализовать.*супервизора"
+        ]
       }
     },
-
     "prompt-engineering": {
       "path": "prompt-engineering/SKILL.md",
       "description": "Prompt engineering techniques and best practices",
       "triggers": {
-        "keywords": ["prompt engineering", "system prompt", "few-shot", "chain of thought", "prompt design", "improve prompt", "prompt template", "prompting technique",
-                     "инженерия промптов", "системный промпт", "улучшить промпт", "шаблон промпта", "техника промптинга", "написать промпт"],
+        "keywords": [
+          "prompt engineering",
+          "system prompt",
+          "few-shot",
+          "chain of thought",
+          "prompt design",
+          "improve prompt",
+          "prompt template",
+          "prompting technique",
+          "инженерия промптов",
+          "системный промпт",
+          "улучшить промпт",
+          "шаблон промпта",
+          "техника промптинга",
+          "написать промпт"
+        ],
         "file_extensions": [],
-        "task_patterns": ["engineer.*prompt", "improve.*prompt", "design.*system.*prompt", "write.*prompt",
-                          "улучшить.*промпт", "написать.*системный.*промпт"]
+        "task_patterns": [
+          "engineer.*prompt",
+          "improve.*prompt",
+          "design.*system.*prompt",
+          "write.*prompt",
+          "улучшить.*промпт",
+          "написать.*системный.*промпт"
+        ]
       }
     },
-
     "c4-context": {
       "path": "c4-context/SKILL.md",
       "description": "C4 model — Context diagram (level 1)",
       "triggers": {
-        "keywords": ["c4 context", "context diagram", "system context", "c4 level 1", "c4 model context",
-                     "диаграмма контекста", "контекстная диаграмма системы", "c4 контекст"],
+        "keywords": [
+          "c4 context",
+          "context diagram",
+          "system context",
+          "c4 level 1",
+          "c4 model context",
+          "диаграмма контекста",
+          "контекстная диаграмма системы",
+          "c4 контекст"
+        ],
         "file_extensions": [],
-        "task_patterns": ["draw.*context.*diagram", "c4.*context",
-                          "нарисовать.*контекстную.*диаграмму"]
+        "task_patterns": [
+          "draw.*context.*diagram",
+          "c4.*context",
+          "нарисовать.*контекстную.*диаграмму"
+        ]
       }
     },
-
     "c4-component": {
       "path": "c4-component/SKILL.md",
       "description": "C4 model — Component diagram (level 3)",
       "triggers": {
-        "keywords": ["c4 component", "component diagram", "c4 level 3", "c4 container component",
-                     "диаграмма компонентов", "контейнерная диаграмма", "c4 компонент"],
+        "keywords": [
+          "c4 component",
+          "component diagram",
+          "c4 level 3",
+          "c4 container component",
+          "диаграмма компонентов",
+          "контейнерная диаграмма",
+          "c4 компонент"
+        ],
         "file_extensions": [],
-        "task_patterns": ["draw.*component.*diagram", "c4.*component",
-                          "нарисовать.*диаграмму.*компонентов"]
+        "task_patterns": [
+          "draw.*component.*diagram",
+          "c4.*component",
+          "нарисовать.*диаграмму.*компонентов"
+        ]
       }
     },
-
     "c4-code": {
       "path": "c4-code/SKILL.md",
       "description": "C4 model — Code diagram (level 4, class/UML)",
       "triggers": {
-        "keywords": ["c4 code", "code diagram", "class diagram", "uml", "c4 level 4", "sequence diagram",
-                     "диаграмма классов", "uml диаграмма", "диаграмма последовательности", "c4 код"],
+        "keywords": [
+          "c4 code",
+          "code diagram",
+          "class diagram",
+          "uml",
+          "c4 level 4",
+          "sequence diagram",
+          "диаграмма классов",
+          "uml диаграмма",
+          "диаграмма последовательности",
+          "c4 код"
+        ],
         "file_extensions": [],
-        "task_patterns": ["draw.*class.*diagram", "uml.*diagram", "c4.*code",
-                          "нарисовать.*диаграмму.*классов", "uml.*диаграмма"]
+        "task_patterns": [
+          "draw.*class.*diagram",
+          "uml.*diagram",
+          "c4.*code",
+          "нарисовать.*диаграмму.*классов",
+          "uml.*диаграмма"
+        ]
       }
     },
-
     "app-store-optimization": {
       "path": "app-store-optimization/SKILL.md",
       "description": "App Store Optimization (ASO) for iOS/Android",
       "triggers": {
-        "keywords": ["aso", "app store", "app ranking", "app store optimization", "play store", "app store listing", "app metadata", "app keywords",
-                     "оптимизация магазина приложений", "ранжирование приложения", "aso стратегия", "позиция в app store"],
+        "keywords": [
+          "aso",
+          "app store",
+          "app ranking",
+          "app store optimization",
+          "play store",
+          "app store listing",
+          "app metadata",
+          "app keywords",
+          "оптимизация магазина приложений",
+          "ранжирование приложения",
+          "aso стратегия",
+          "позиция в app store"
+        ],
         "file_extensions": [],
-        "task_patterns": ["optimize.*app.*store", "improve.*app.*ranking", "aso.*strategy",
-                          "оптимизировать.*app store", "улучшить.*позицию.*приложения"]
+        "task_patterns": [
+          "optimize.*app.*store",
+          "improve.*app.*ranking",
+          "aso.*strategy",
+          "оптимизировать.*app store",
+          "улучшить.*позицию.*приложения"
+        ]
+      }
+    },
+    "context-mode-mcp": {
+      "path": "skills/context-mode-mcp/SKILL.md",
+      "description": "Use context-mode MCP tools to execute code, index and search content in sandbox — keeps raw data out of context window",
+      "triggers": {
+        "keywords": [
+          "context-mode",
+          "context mode",
+          "batch_execute",
+          "execute_file",
+          "fetch_and_index",
+          "mcp sandbox",
+          "context window",
+          "индексировать",
+          "sandbox выполнение",
+          "поиск по коду",
+          "большой файл анализ",
+          "засоряет",
+          "засорен",
+          "контекст окно",
+          "переполнен контекст",
+          "sandbox",
+          "выполнить код",
+          "индексировать файл",
+          "поиск файл"
+        ],
+        "task_patterns": [
+          "context.mode",
+          "batch.execute",
+          "execute.file",
+          "fetch.and.index",
+          "засоряет.*context",
+          "context.*window"
+        ]
+      }
+    },
+    "osgrep": {
+      "path": "skills/osgrep/SKILL.md",
+      "description": "Semantic code search using natural language queries via osgrep MCP",
+      "triggers": {
+        "keywords": [
+          "osgrep",
+          "semantic search",
+          "семантический поиск",
+          "где реализовано",
+          "как работает",
+          "найди логику",
+          "find implementation",
+          "locate code",
+          "search codebase",
+          "найди функцию",
+          "найди класс",
+          "найди код",
+          "поиск по кодовой базе"
+        ],
+        "task_patterns": [
+          "where.*implement",
+          "how.*work",
+          "find.*function",
+          "locate.*class",
+          "где.*реализован",
+          "как.*работает",
+          "найди.*функци",
+          "найди.*класс"
+        ]
+      }
+    },
+    "skill-security-audit": {
+      "path": "skills/skill-security-audit/SKILL.md",
+      "description": "Security audit of SKILL.md before installation",
+      "triggers": {
+        "keywords": [
+          "аудит скилла",
+          "проверка скилла",
+          "безопасность скилла",
+          "skill audit",
+          "scan skill",
+          "security check skill",
+          "проверить skill",
+          "аудит навыка"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "audit.*skill",
+          "scan.*SKILL\\.md",
+          "check.*skill.*security",
+          "проверить.*безопасность.*скилла",
+          "аудит.*SKILL"
+        ]
+      }
+    },
+    "install-skill-from-github": {
+      "path": "skills/install-skill-from-github/SKILL.md",
+      "description": "Install skill from GitHub with security checks and cross-tool compatibility",
+      "triggers": {
+        "keywords": [
+          "установить скилл",
+          "установить навык",
+          "install skill",
+          "github skill",
+          "скилл из github",
+          "добавить навык из github",
+          "install skill from github",
+          "добавить скилл"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "install.*skill.*github",
+          "add.*skill.*https://github",
+          "установить.*скилл.*github",
+          "добавить.*навык.*из.*репозитори"
+        ]
       }
     }
-
   },
-
   "cowork_plugins": {
     "_note": "Loaded automatically via Cowork plugin system — не нужны в ~/.shared-ai-skills/",
-    "pptx":        "anthropic-skills:pptx",
-    "docx":        "anthropic-skills:docx",
-    "xlsx":        "anthropic-skills:xlsx",
-    "pdf":         "anthropic-skills:pdf",
-    "canvas":      "anthropic-skills:canvas-design",
+    "pptx": "anthropic-skills:pptx",
+    "docx": "anthropic-skills:docx",
+    "xlsx": "anthropic-skills:xlsx",
+    "pdf": "anthropic-skills:pdf",
+    "canvas": "anthropic-skills:canvas-design",
     "mcp-builder": "anthropic-skills:mcp-builder",
     "skill-creator": "anthropic-skills:skill-creator",
     "algorithmic-art": "anthropic-skills:algorithmic-art",
-    "slack-gif":   "anthropic-skills:slack-gif-creator",
+    "slack-gif": "anthropic-skills:slack-gif-creator",
     "web-artifacts": "anthropic-skills:web-artifacts-builder"
   }
 }

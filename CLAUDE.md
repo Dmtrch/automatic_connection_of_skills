@@ -24,10 +24,15 @@ python3 dispatch.py show pptx
 # Install a skill from aitmpl.com/skills and auto-register in registry.json
 python3 dispatch.py add creative-design/frontend-design
 
+# Install a skill from a GitHub repo
+python3 dispatch.py add https://github.com/USER/REPO
+python3 dispatch.py add --npx "npx skills add https://github.com/USER/REPO --skill SKILL-NAME"
+
 # Universal wrapper (routes to claude/gemini/codex with auto skill injection)
 ai "create a PowerPoint about AI trends"
 ai -t gemini "write a Python script..."
 ai --dry-run "create a presentation"    # show detected skills without running
+ai --no-inject "simple question"        # skip skill injection entirely
 ai --list-skills
 ai --add-skill creative-design/frontend-design
 
@@ -40,8 +45,8 @@ bash install.sh
 ### Core Files
 - **`dispatch.py`** — Central dispatcher. Loads `registry.json`, detects needed skills by matching keywords/file extensions/regex patterns in the prompt, and injects `SKILL.md` content into prompts (capped at ~4000 tokens/skill, ~12000 tokens total). Supports Russian via light suffix-stripping stemmer (`_stem_ru_word`).
 - **`registry.json`** — Machine-readable skill registry. Has three top-level sections:
+  - `"_meta"` — version and last-updated metadata
   - `"skills"` — skills detected and injected by `dispatch.py`
-  - `"agents"` — agent/plugin hints (detected but not content-injected)
   - `"cowork_plugins"` — document-type plugins (pptx, docx, xlsx, pdf, canvas) loaded by the Cowork plugin system, not by this dispatcher
 - **`INDEX.md`** — Human-readable trigger index embedded in `~/.claude/CLAUDE.md` for direct in-context lookup without running the dispatcher.
 
@@ -87,12 +92,23 @@ Token usage: total=63 324  input=58 900 (+ 160 000 cached)  output=4 424 (reason
 ```
 
 ### Adding a New Skill
+
+**From GitHub (external skill — mandatory security audit):**
+```bash
+python3 dispatch.py add https://github.com/USER/REPO
+```
+Uses `install-skill-from-github` skill: downloads SKILL.md → runs `skill-security-audit` →
+registers in `registry.json` + `INDEX.md` → verifies symlinks for all AI tools.
+CRITICAL findings block installation with no override. HIGH findings require explicit `ДА`.
+
+**From scratch (local skill):**
 1. Create `<skill-name>/SKILL.md` (or `skills/<skill-name>/SKILL.md` for document skills)
 2. Add an entry to `registry.json` under `"skills"` with `path`, `description`, and `triggers`
 3. Add a row to `INDEX.md` for human-readable lookup
 4. Test: `python3 dispatch.py detect "keyword from your skill"`
 
-Or use the auto-installer: `python3 dispatch.py add <category/skill-name>` — downloads from aitmpl.com, auto-extracts keywords from SKILL.md content, warns about duplicate triggers with existing skills, and registers in both `registry.json` and `INDEX.md`.
+**From marketplace (aitmpl.com):**
+`python3 dispatch.py add <category/skill-name>` — downloads, auto-extracts keywords, warns about duplicate triggers, registers in `registry.json` and `INDEX.md`.
 
 ### Modifying Triggers
 All trigger logic is in `registry.json`. Each skill supports:

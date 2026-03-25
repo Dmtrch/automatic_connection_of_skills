@@ -51,6 +51,12 @@
 | api security, jwt, oauth, owasp, безопасность api, аутентификация | `api-security-best-practices` |
 | api docs, document api, swagger, документация api, задокументировать api | `api-documentation-generator` |
 
+## 🧰 MCP Tools
+
+| Trigger keywords | Skill folder |
+|---|---|
+| context-mode, batch_execute, execute_file, fetch_and_index, context window засорён, большой файл в sandbox, поиск по коду | `context-mode-mcp` |
+
 ## 🤖 AI Agents
 
 | Trigger keywords | Skill folder |
@@ -83,12 +89,20 @@
 | tdd, test driven, red green refactor, разработка через тесты | `test-driven-development` |
 | performance, optimization, profiling, производительность, оптимизация, профилирование | `application-performance` |
 
+## 🔐 Security & Installation
+
+| Trigger keywords | Skill folder |
+|---|---|
+| аудит скилла, проверка скилла, skill audit, scan skill, security check skill, аудит навыка | `skill-security-audit` |
+| установить скилл, install skill, github skill, скилл из github, добавить навык из github | `install-skill-from-github` |
+
 ## 🗂 Meta
 
 | Trigger keywords | Skill folder |
 |---|---|
 | planning, roadmap, step by step plan, планирование, дорожная карта, пошаговый план | `planning-with-files` |
 | find skill, which skill, list skills, найти навык, какой навык, список навыков | `find-skills` |
+| skill conductor, create skill, evaluate skill, benchmark skill, package skill, создать навык, оценить навык, улучшить навык | `skill-conductor` |
 
 ---
 
