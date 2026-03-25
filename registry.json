@@ -1227,6 +1227,125 @@
           "скилл.*из.*github\\.com"
         ]
       }
+    },
+    "design-md": {
+      "path": "skills/design-md/SKILL.md",
+      "description": "Analyze Stitch projects and synthesize semantic design system into DESIGN.md",
+      "triggers": {
+        "keywords": [
+          "stitch design-md",
+          "design.md stitch",
+          "stitch дизайн",
+          "design tokens stitch"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*design-md",
+          "stitch.*design"
+        ]
+      }
+    },
+    "enhance-prompt": {
+      "path": "skills/enhance-prompt/SKILL.md",
+      "description": "Transform vague UI ideas into polished Stitch-optimized prompts",
+      "triggers": {
+        "keywords": [
+          "enhance prompt stitch",
+          "stitch prompt",
+          "улучшить промпт stitch",
+          "stitch ui prompt"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*enhance-prompt",
+          "stitch.*enhance"
+        ]
+      }
+    },
+    "react-components": {
+      "path": "skills/react-components/SKILL.md",
+      "description": "Convert Stitch designs into modular Vite/React components",
+      "triggers": {
+        "keywords": [
+          "stitch react",
+          "stitch vite",
+          "stitch компоненты",
+          "convert stitch react"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*react-components",
+          "stitch.*react"
+        ]
+      }
+    },
+    "remotion": {
+      "path": "skills/remotion/SKILL.md",
+      "description": "Generate walkthrough videos from Stitch projects using Remotion",
+      "triggers": {
+        "keywords": [
+          "stitch remotion",
+          "stitch video",
+          "remotion video",
+          "stitch видео"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*remotion",
+          "stitch.*remotion"
+        ]
+      }
+    },
+    "shadcn-ui": {
+      "path": "skills/shadcn-ui/SKILL.md",
+      "description": "Expert guidance for shadcn/ui component integration and application building",
+      "triggers": {
+        "keywords": [
+          "shadcn",
+          "shadcn-ui",
+          "shadcn ui",
+          "шадcn",
+          "shadcn компонент"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*shadcn-ui",
+          "stitch.*shadcn"
+        ]
+      }
+    },
+    "stitch-design": {
+      "path": "skills/stitch-design/SKILL.md",
+      "description": "Unified entry point for Stitch design work: prompt enhancement and design iteration",
+      "triggers": {
+        "keywords": [
+          "stitch design",
+          "stitch",
+          "stitch дизайн работа"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*stitch-design",
+          "stitch.*stitch"
+        ]
+      }
+    },
+    "stitch-loop": {
+      "path": "skills/stitch-loop/SKILL.md",
+      "description": "Iterative autonomous loop pattern for building websites with Stitch",
+      "triggers": {
+        "keywords": [
+          "stitch loop",
+          "stitch итерация",
+          "stitch автономный",
+          "stitch baton"
+        ],
+        "file_extensions": [],
+        "task_patterns": [
+          "use.*stitch-loop",
+          "stitch.*stitch"
+        ]
+      }
     }
   },
   "cowork_plugins": {

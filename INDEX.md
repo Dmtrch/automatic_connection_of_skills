@@ -109,5 +109,18 @@
 ## Document Skills (via Cowork plugins — auto-loaded separately)
 `pptx` · `docx` · `xlsx` · `pdf` · `canvas-design` · `algorithmic-art` · `slack-gif-creator`
 
+
+## 🎨 Stitch & UI
+
+| Trigger keywords | Skill folder |
+|---|---|
+| stitch design, stitch дизайн, design tokens stitch | `stitch-design` |
+| stitch loop, stitch итерация, stitch автономный | `stitch-loop` |
+| enhance prompt stitch, stitch prompt, stitch ui prompt | `enhance-prompt` |
+| stitch design-md, design.md stitch, stitch дизайн система | `design-md` |
+| stitch react, stitch vite, stitch компоненты | `react-components` |
+| stitch remotion, stitch video, remotion video | `remotion` |
+| shadcn, shadcn-ui, shadcn ui, shadcn компонент | `shadcn-ui` |
+
 ---
 *Index cost: ~600 tokens · Full skills: ~40k+ tokens · Savings: ~98%*
