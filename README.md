@@ -68,27 +68,40 @@ ai --list-skills
 
 #### Installing skills from GitHub
 
-The recommended way to install any external skill. Runs a mandatory security audit before installation.
+The recommended way to install any external skill. Involves a **mandatory security audit** that must run before any file is copied.
+
+> **Direct installation via `cp`, `mv`, or `mkdir` into `~/.shared-ai-skills` is strictly prohibited.**
+> Always go through the security audit step first.
+
+**When using Claude Code** — just say "install skill from github" and provide the URL. Claude invokes the `install-skill-from-github` skill, which orchestrates the full 7-step flow automatically.
+
+**From the terminal:**
 
 ```bash
-# Install from a GitHub repository (security audit runs automatically)
-ai --add-skill https://github.com/USER/REPO
+# Step 1: Download SKILL.md to a temp directory
+TMPDIR="/tmp/skill-install-$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$TMPDIR"
+curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/SKILL.md -o "$TMPDIR/SKILL.md"
 
-# Equivalent using dispatch.py directly
+# Step 2: Run the mandatory security audit (MUST pass before proceeding)
+~/from_git/skill-scanner/scripts/install-skill.sh "$TMPDIR"
+
+# Step 3: Register and install (only after audit passes)
 python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
 
 # For repos with multiple skills — pick a specific one
 python3 ~/.shared-ai-skills/dispatch.py add --npx \
-  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME"
+  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME --yes"
 ```
 
-The installer:
-1. Downloads `SKILL.md` to a temporary directory
-2. **Runs `skill-security-audit`** — checks for prompt injection, data exfiltration, file deletion, and network abuse
-3. On CRITICAL findings: blocks installation with no override
-4. On HIGH findings: blocks installation, asks for explicit `ДА` to continue
-5. Registers in `registry.json` and adds a row to `INDEX.md`
-6. Verifies symlinks for all AI tools (Claude Code, Gemini, Codex, OpenCode)
+Full 7-step installation flow:
+1. Download `SKILL.md` to a temporary directory and verify frontmatter
+2. **Run `skill-scanner` security audit** — checks for prompt injection, data exfiltration, file deletion, network abuse
+3. On CRITICAL findings: installation blocked, no override possible
+4. On HIGH findings: show report, ask for explicit `ДА` to continue
+5. Determine install path (`skills/<name>/` for document skills, `<name>/` for language/framework skills)
+6. Register in `registry.json` and add a row to `INDEX.md` via `dispatch.py`
+7. Verify symlinks for all AI tools and confirm with `dispatch.py list` + `dispatch.py detect`
 
 #### Installing skills from the marketplace
 
@@ -190,11 +203,18 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 
 #### From GitHub (external skill — security audit required)
 
+In Claude Code, just say "install skill from github" with the URL — the `install-skill-from-github` skill handles everything.
+
+From the terminal, follow the full 7-step flow described in [Installing skills from GitHub](#installing-skills-from-github). The short version:
+
 ```bash
+# 1. Download
+curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/SKILL.md -o /tmp/skill/SKILL.md
+# 2. Audit (mandatory — do not skip)
+~/from_git/skill-scanner/scripts/install-skill.sh /tmp/skill
+# 3. Register (only after audit passes)
 python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
 ```
-
-This runs the full security audit automatically. See [Installing skills from GitHub](#installing-skills-from-github).
 
 #### From scratch (local skill)
 
@@ -331,27 +351,40 @@ ai --list-skills
 
 #### Установка скиллов из GitHub
 
-Рекомендуемый способ для любого внешнего скилла. Перед установкой автоматически запускается проверка безопасности.
+Рекомендуемый способ для любого внешнего скилла. Перед установкой обязателен **аудит безопасности**.
+
+> **Прямая установка через `cp`, `mv` или `mkdir` в `~/.shared-ai-skills` строго запрещена.**
+> Всегда сначала проходите шаг аудита безопасности.
+
+**В Claude Code** — просто скажите «установи скилл из github» и укажите URL. Claude вызывает скилл `install-skill-from-github`, который автоматически проводит полный 7-шаговый процесс.
+
+**Из терминала:**
 
 ```bash
-# Установить из GitHub-репозитория (аудит безопасности запускается автоматически)
-ai --add-skill https://github.com/USER/REPO
+# Шаг 1: Скачать SKILL.md во временную папку
+TMPDIR="/tmp/skill-install-$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$TMPDIR"
+curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/SKILL.md -o "$TMPDIR/SKILL.md"
 
-# То же самое через dispatch.py напрямую
+# Шаг 2: Обязательный аудит безопасности (без него продолжать нельзя)
+~/from_git/skill-scanner/scripts/install-skill.sh "$TMPDIR"
+
+# Шаг 3: Регистрация (только после прохождения аудита)
 python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
 
 # Для репозиториев с несколькими скиллами — выбрать конкретный
 python3 ~/.shared-ai-skills/dispatch.py add --npx \
-  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME"
+  "npx skills add https://github.com/USER/REPO --skill SKILL-NAME --yes"
 ```
 
-Установщик:
-1. Скачивает `SKILL.md` во временную директорию
-2. **Запускает `skill-security-audit`** — проверяет промпт-инъекции, утечку данных, удаление файлов, сетевые вызовы
+Полный 7-шаговый процесс установки:
+1. Скачать `SKILL.md` во временную директорию и проверить фронтматтер
+2. **Запустить аудит `skill-scanner`** — проверка промпт-инъекций, утечки данных, удаления файлов, сетевых вызовов
 3. При CRITICAL-угрозах: установка заблокирована без возможности обхода
-4. При HIGH-угрозах: установка заблокирована, запрашивает явное `ДА` для продолжения
-5. Регистрирует в `registry.json` и добавляет строку в `INDEX.md`
-6. Проверяет симлинки для всех AI-инструментов (Claude Code, Gemini, Codex, OpenCode)
+4. При HIGH-угрозах: показать отчёт, запросить явное `ДА` для продолжения
+5. Определить путь установки (`skills/<name>/` для документальных скиллов, `<name>/` для языков/фреймворков)
+6. Зарегистрировать в `registry.json` и добавить строку в `INDEX.md` через `dispatch.py`
+7. Проверить симлинки для всех AI-инструментов и подтвердить через `dispatch.py list` + `dispatch.py detect`
 
 #### Установка скиллов из маркетплейса
 
@@ -444,11 +477,18 @@ python3 ~/.shared-ai-skills/dispatch.py show python-pro
 
 #### Из GitHub (внешний скилл — требуется аудит безопасности)
 
+В Claude Code достаточно написать «установи скилл из github» с URL — скилл `install-skill-from-github` сделает всё сам.
+
+Из терминала — полный 7-шаговый процесс описан в [Установка скиллов из GitHub](#установка-скиллов-из-github). Кратко:
+
 ```bash
+# 1. Скачать
+curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/SKILL.md -o /tmp/skill/SKILL.md
+# 2. Аудит (обязательно — пропустить нельзя)
+~/from_git/skill-scanner/scripts/install-skill.sh /tmp/skill
+# 3. Регистрация (только после прохождения аудита)
 python3 ~/.shared-ai-skills/dispatch.py add https://github.com/USER/REPO
 ```
-
-Аудит безопасности запускается автоматически. Подробнее: [Установка скиллов из GitHub](#установка-скиллов-из-github).
 
 #### С нуля (локальный скилл)
 
